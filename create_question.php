@@ -13,7 +13,8 @@ if(!empty($_POST['module'])&&
 && !empty($_POST['answer4'])
 && !empty($_POST['answer4resp'])
 && !empty($_POST['answer5'])
-&& !empty($_POST['answer5resp'])
+&& !empty($_POST['answer5resp']
+&&!empty($_POST['explic']))
 ){
 $module = $_POST['module'];
 $semester = $_POST['semester'];
@@ -29,7 +30,7 @@ $answer4 = $_POST['answer4'];
 $answer4resp = $_POST['answer4resp'];
 $answer5 = $_POST['answer5']; 
 $answer5resp = $_POST['answer5resp'];
-
+$explication =$_POST['explic'];
 $query = "SELECT * FROM questions WHERE module = '$module' AND semester = '$semester' AND annee = '$annee' AND qcm = '$qcm'";
 $stmt = mysqli_query($connection, $query);
 if(mysqli_num_rows($stmt) != 0){
@@ -37,8 +38,8 @@ if(mysqli_num_rows($stmt) != 0){
     $data['message'] = 'cet question existe deja';
 }else{
     
-        $query = "INSERT INTO questions (module,annee,semester,qcm,answer1,resp1,answer2,resp2,answer3,resp3,answer4,resp4,answer5,resp5)
-        VALUES('$module','$annee','$semester','$qcm','$answer1','$answer1resp','$answer2','$answer2resp','$answer3','$answer3resp','$answer4','$answer4resp','null','false')";
+        $query = "INSERT INTO questions (module,annee,semester,qcm,answer1,resp1,answer2,resp2,answer3,resp3,answer4,resp4,answer5,resp5,explication)
+        VALUES('$module','$annee','$semester','$qcm','$answer1','$answer1resp','$answer2','$answer2resp','$answer3','$answer3resp','$answer4','$answer4resp','null','false','$explication')";
         $stmt = mysqli_query($connection, $query);
         
         if($stmt){

@@ -16,7 +16,7 @@ if(
 && !empty($_POST['answer4resp'])
 && !empty($_POST['answer5'])
 && !empty($_POST['answer5resp'])
-){
+&&!empty($_POST['explic'])){
 $id_qcm = $_POST['id_qcm'];
 $module = $_POST['module'];
 $semester = $_POST['semester'];
@@ -32,11 +32,11 @@ $answer4 = $_POST['answer4'];
 $answer4resp = $_POST['answer4resp'];
 $answer5 = $_POST['answer5']; 
 $answer5resp = $_POST['answer5resp'];
-
+$explication = $_POST['explic'];
 $query = "SELECT * FROM questions WHERE id_qcm= '$id_qcm'";
 $stmt = mysqli_query($connection, $query);
 if(mysqli_num_rows($stmt) != 0){
-    $query = "UPDATE questions SET module ='$module',semester='$semester',annee='$annee',answer1='$answer1',resp1='$answer1resp',answer2='$answer2',resp2='$answer2resp',answer3='$answer3',resp3='$answer3resp',answer4='$answer3',resp4='$answer4resp',answer5='$answer5',resp5='$answer5resp' WHERE id_qcm ='$id_qcm'";
+    $query = "UPDATE questions SET module ='$module',semester='$semester',annee='$annee',answer1='$answer1',resp1='$answer1resp',answer2='$answer2',resp2='$answer2resp',answer3='$answer3',resp3='$answer3resp',answer4='$answer3',resp4='$answer4resp',answer5='$answer5',resp5='$answer5resp',explication='$explication' WHERE id_qcm ='$id_qcm'";
     $stmt = mysqli_query($connection, $query);
     if($stmt)
         $data['status'] = true;
