@@ -22,6 +22,7 @@ if($stmt){
        $questions['resp4'] = $row['resp4'];
        $questions['answer5'] = $row['answer5'];
        $questions['resp5'] = $row['resp5'];
+       $questions['explication'] = $row['explication'];
        array_push($data['questions'],$questions);
     }
     
