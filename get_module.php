@@ -1,7 +1,9 @@
 <?php 
 include './db.php';
-
-$query = "SELECT * FROM modules";
+if(!empty($_POST['years'])){
+    $years = $_POST['years'];
+    
+$query = "SELECT * FROM modules WHERE annee: '$years'";
 $stmt = mysqli_query($connection,$query);
 if($stmt){
     $data['status'] = true;
@@ -18,6 +20,10 @@ if($stmt){
 }else{
     $data['status'] = false;
     $data['message'] = 'error d\'avoir tout les module';
+}
+}else{
+    $data['status'] = false;
+    $data['message'] = 'Veuillez entre des informations correctes';
 }
 header('Content-Type: application/json');
 echo json_encode($data, JSON_PRETTY_PRINT);
